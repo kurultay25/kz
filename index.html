@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Международный Курултай социальных предпринимателей 2025</title>
+    <meta name="description" content="Международный Курултай социальных предпринимателей 2025 в Астане. 24-25 ноября. Гибридный формат. 600 очных + 400 онлайн участников.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #1C1C1C;
+            --primary-color: #064789;
+            --accent-color: #E60023;
+            --text-color: #FFFFFF;
+            --secondary-bg: #2A2A2A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+            padding-top: 80px; /* Отступ для фиксированной шапки */
+        }
+        
+        /* Background Animation */
+        .bg-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .bg-line {
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+            animation: moveLine 20s linear infinite;
+        }
+        
+        @keyframes moveLine {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(28, 28, 28, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: 80px; /* Фиксированная высота шапки */
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--secondary-bg);
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .lang-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .lang-option {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        
+        .lang-option:hover {
+            background: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - 80px); /* Учитываем высоту шапки */
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: url('hero-bg.png') center/cover;
+            overflow: hidden; /* Предотвращают выпадение содержимого */
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(28, 28, 28, 0.7);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%; /* Обеспечивает правильную ширину */
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary:hover {
+            background: #ff4757;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(230, 0, 35, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Program Styles */
+        .program-day {
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .program-time {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .program-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .program-description {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .program-speakers {
+            background: rgba(6, 71, 137, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .speakers-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .speakers-list li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .speakers-list li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Objectives */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .objective-card {
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            border-top: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .objective-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Countries Grid */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .country-item {
+            background: var(--secondary-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .country-item:hover {
+            background: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--secondary-bg);
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .header {
+                height: 70px;
+            }
+            
+            .hero {
+                min-height: calc(100vh - 70px);
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .btn-primary, .btn-secondary {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countries-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+        
+        /* Language specific styles */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+        
+        /* Fix text overlap */
+        .hero-content .lang-content {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Ensure proper spacing */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-lines">
+        <div class="bg-line" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="bg-line" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="bg-line" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="bg-line" style="left: 40%; animation-delay: 6s;"></div>
+        <div class="bg-line" style="left: 50%; animation-delay: 8s;"></div>
+        <div class="bg-line" style="left: 60%; animation-delay: 10s;"></div>
+        <div class="bg-line" style="left: 70%; animation-delay: 12s;"></div>
+        <div class="bg-line" style="left: 80%; animation-delay: 14s;"></div>
+        <div class="bg-line" style="left: 90%; animation-delay: 16s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Logo" class="h-10 w-auto">
+                    <div class="lang-content active" data-lang="ru">
+                        <span class="text-xl font-bold">Курултай 2025</span>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <span class="text-xl font-bold">Құрылтай 2025</span>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <span class="text-xl font-bold">Kurultai 2025</span>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#home" class="nav-link active" data-lang-key="nav-home">Главная</a>
+                    <a href="index.html#program" class="nav-link" data-lang-key="nav-program">Программа</a>
+                    <a href="index.html#objectives" class="nav-link" data-lang-key="nav-objectives">Цели</a>
+                    <a href="index.html#countries" class="nav-link" data-lang-key="nav-countries">Страны</a>
+                </nav>
+                
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="flex items-center space-x-2 px-3 py-2 rounded-lg bg-secondary-bg hover:bg-primary-color transition-colors">
+                        <span class="lang-current">🇷🇺 RU</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown">
+                        <div class="lang-option active" data-lang="ru">🇷🇺 Русский</div>
+                        <div class="lang-option" data-lang="kz">🇰🇿 Қазақша</div>
+                        <div class="lang-option" data-lang="en">🇬🇧 English</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content max-w-4xl">
+                <div class="lang-content active" data-lang="ru">
+                    <h1 class="hero-title">
+                        МЕЖДУНАРОДНЫЙ<br>
+                        КУРУЛТАЙ<br>
+                        <span style="color: var(--accent-color);">СОЦИАЛЬНЫХ</span><br>
+                        ПРЕДПРИНИМАТЕЛЕЙ
+                    </h1>
+                    <p class="hero-subtitle">24-25 ноября 2025 • Астана • Казахстан</p>
+                    <p class="hero-description">
+                        Крупнейшее событие в сфере социального предпринимательства в Центральной Азии. 
+                        Объединяем лидеров, инноваторов и инвесторов для создания устойчивого будущего.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <button class="btn-primary" onclick="openForm('award')">
+                            Заявка на премию лучшего соц.предпринимателя
+                        </button>
+                        <button class="btn-secondary" onclick="openForm('alley')">
+                            Заявка на участие в аллее соц.предпринимателей
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="lang-content" data-lang="kz">
+                    <h1 class="hero-title">
+                        ХАЛЫҚАРАЛЫҚ<br>
+                        ҚҰРЫЛТАЙ<br>
+                        <span style="color: var(--accent-color);">ӘЛЕУМЕТТІК</span><br>
+                        КӘСІПКЕРЛЕР
+                    </h1>
+                    <p class="hero-subtitle">24-25 қараша 2025 • Астана • Қазақстан</p>
+                    <p class="hero-description">
+                        Орталық Азиядағы әлеуметтік кәсіпкерлік саласындағы ірі шара. 
+                        Тұрақты болашақ құру үшін көшбасшыларды, инноваторларды және инвесторларды біріктіреміз.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <button class="btn-primary" onclick="openForm('award')">
+                            Үздік әлеуметтік кәсіпкер сыйлығына өтінім
+                        </button>
+                        <button class="btn-secondary" onclick="openForm('alley')">
+                            Әлеуметтік кәсіпкерлер аллеясына қатысуға өтінім
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="lang-content" data-lang="en">
+                    <h1 class="hero-title">
+                        INTERNATIONAL<br>
+                        KURULTAI OF<br>
+                        <span style="color: var(--accent-color);">SOCIAL</span><br>
+                        ENTREPRENEURS
+                    </h1>
+                    <p class="hero-subtitle">November 24-25, 2025 • Astana • Kazakhstan</p>
+                    <p class="hero-description">
+                        The largest event in the field of social entrepreneurship in Central Asia. 
+                        We unite leaders, innovators and investors to create a sustainable future.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <button class="btn-primary" onclick="openForm('award')">
+                            Application for Best Social Entrepreneur Award
+                        </button>
+                        <button class="btn-secondary" onclick="openForm('alley')">
+                            Application for Social Entrepreneurs Alley Participation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program" class="section" style="background: var(--secondary-bg);">
+        <div class="container">
+            <div class="lang-content active" data-lang="ru">
+                <h2 class="section-title fade-in">ПРОГРАММА МЕРОПРИЯТИЯ</h2>
+                <p class="section-subtitle fade-in">
+                    Двухдневная интенсивная программа с участием международных экспертов, 
+                    туров по социальным предприятиям и нетворкинг-сессиями.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="kz">
+                <h2 class="section-title fade-in">ІС-ШАРА БАҒДАРЛАМАСЫ</h2>
+                <p class="section-subtitle fade-in">
+                    Халықаралық сарапшылардың қатысуымен екі күндік бағытталған бағдарлама, 
+                    әлеуметтік кәсіпорындарға турлар және нетворкинг сессиялары.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="en">
+                <h2 class="section-title fade-in">EVENT PROGRAM</h2>
+                <p class="section-subtitle fade-in">
+                    Two-day intensive program with international experts, 
+                    social enterprise tours and networking sessions.
+                </p>
+            </div>
+            
+            <div class="space-y-8 mt-12">
+                <!-- Day 1 -->
+                <div class="program-day fade-in">
+                    <div class="lang-content active" data-lang="ru">
+                        <div class="program-time">24 ноября 2025</div>
+                        <div class="program-title">День первый - Тур и знакомство</div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <strong>10:00–13:00 | Тур по социальным предприятиям Астаны</strong>
+                                <p class="program-description">
+                                    Факультативный тур, демонстрирующий успешные и разнообразные модели социальных предприятий, 
+                                    действующих в Астане. Участники получат возможность наглядно познакомиться с реализацией 
+                                    социальных инноваций в Казахстане.
+                                </p>
+                                <div class="program-speakers">
+                                    <strong>Посещения:</strong>
+                                    <ul class="speakers-list">
+                                        <li>NeSPI — сообщество послевоенной интеграции по социализации и адаптации бывших служащих силового блока</li>
+                                        <li>Kunde Café — социальное кафе, предоставляющее рабочие места людям с инвалидностью</li>
+                                        <li>Garber Group — предприятие по устойчивой моде и переработке, работающее с уязвимыми сообществами</li>
+                                        <li>Astana Hub — ведущий технологический и инновационный хаб Центральной Азии</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <strong>14:00–16:30 | Экскурсия по Астане</strong>
+                                <p class="program-description">
+                                    Посещение культурных и современных достопримечательностей Астаны: 
+                                    Мечеть Хазрет Султан, ЭКСПО, Байтерек, Национальный музей Республики Казахстан.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>17:00–19:00 | Ориентационная и нетворкинг-сессия</strong>
+                                <p class="program-description">
+                                    Активности для знакомства участников Курултая и Глобального саммита социального воздействия. 
+                                    Ключевая речь: «Будущее социального предпринимательства» от представителя Глобальной сети социального воздействия.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>19:00–20:00 | Приветственный ужин</strong>
+                                <p class="program-description">
+                                    Неформальный нетворкинг с местными и международными участниками.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lang-content" data-lang="kz">
+                        <div class="program-time">2025 жылғы 24 қараша</div>
+                        <div class="program-title">Бірінші күн - Тур және танысу</div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <strong>10:00–13:00 | Астана қаласындағы әлеуметтік кәсіпорындарға тур</strong>
+                                <p class="program-description">
+                                    Астана қаласында жұмыс істеп тұрған әлеуметтік кәсіпорындардың сәтті және әртүрлі модельдерін 
+                                    көрсететін факультативтік тур. Қатысушылар Қазақстандағы әлеуметтік инновацияларды іске асыруды 
+                                    көзбен көруге мүмкіндік алады.
+                                </p>
+                                <div class="program-speakers">
+                                    <strong>Көруге болады:</strong>
+                                    <ul class="speakers-list">
+                                        <li>NeSPI — күш құрылымдарының бұрынғы қызметкерлерін әлеуметтендіру және бейімдеу жөніндегі поствоенная интеграция қауымдастығы</li>
+                                        <li>Kunde Café — мүгедектігі бар адамдарға жұмыс орындарын ұсынатын әлеуметтік кафе</li>
+                                        <li>Garber Group — осал қауымдастықтармен жұмыс істейтін тұрақты мода және өңдеу кәсіпорны</li>
+                                        <li>Astana Hub — Орталық Азиядағы жетекші технологиялық және инновациялық хаб</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <strong>14:00–16:30 | Астана қаласына экскурсия</strong>
+                                <p class="program-description">
+                                    Астана қаласының мәдени және заманауи ескерткіштерін көру: 
+                                    Хазрет Сұлтан мешіті, ЭКСПО, Бәйтерек, Қазақстан Республикасының Ұлттық музейі.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>17:00–19:00 | Бағыттау және нетворкинг сессиясы</strong>
+                                <p class="program-description">
+                                    Құрылтай және Әлеуметтік әсер саммитінің қатысушыларын таныстыру бойынша белсенділіктер. 
+                                    Негізгі баяндама: Әлеуметтік кәсіпкерліктің болашағы» Әлеуметтік әсердің жаһандық желісінен өкіл.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>19:00–20:00 | Қош келдіңіздер кеші</strong>
+                                <p class="program-description">
+                                    Жергілікті және халықаралық қатысушылармен ресми емес нетворкинг.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lang-content" data-lang="en">
+                        <div class="program-time">November 24, 2025</div>
+                        <div class="program-title">Day One - Tour and Introduction</div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <strong>10:00–13:00 | Tour of Social Enterprises in Astana</strong>
+                                <p class="program-description">
+                                    An optional tour showcasing successful and diverse models of social enterprises operating in Astana. 
+                                    Participants will have the opportunity to see firsthand the implementation of social innovations in Kazakhstan.
+                                </p>
+                                <div class="program-speakers">
+                                    <strong>Visits:</strong>
+                                    <ul class="speakers-list">
+                                        <li>NeSPI - post-war integration community for socialization and adaptation of former security sector employees</li>
+                                        <li>Kunde Café - social cafe providing jobs for people with disabilities</li>
+                                        <li>Garber Group - sustainable fashion and recycling enterprise working with vulnerable communities</li>
+                                        <li>Astana Hub - leading technology and innovation hub of Central Asia</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <strong>14:00–16:30 | Astana City Tour</strong>
+                                <p class="program-description">
+                                    Visit to cultural and modern attractions of Astana: 
+                                    Hazret Sultan Mosque, EXPO, Bayterek, National Museum of the Republic of Kazakhstan.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>17:00–19:00 | Orientation and Networking Session</strong>
+                                <p class="program-description">
+                                    Activities to introduce Kurultai and Global Social Impact Summit participants. 
+                                    Keynote: "The Future of Social Entrepreneurship" from the Global Social Impact Network representative.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>19:00–20:00 | Welcome Dinner</strong>
+                                <p class="program-description">
+                                    Informal networking with local and international participants.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 2 -->
+                <div class="program-day fade-in">
+                    <div class="lang-content active" data-lang="ru">
+                        <div class="program-time">25 ноября 2025</div>
+                        <div class="program-title">День второй - Основная программа</div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <strong>09:00–10:00 | Регистрация участников. Кофе-брейк.</strong>
+                                <p class="program-description">
+                                    Ярмарка продукции социальных предпринимателей, фотовыставка «Социальные предприниматели в лицах», 
+                                    выставка картин созданных лицами с инвалидностью по зрению.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>10:00–10:15 | Открытие саммита</strong>
+                                <div class="program-speakers">
+                                    <strong>Спикер:</strong>
+                                    <ul class="speakers-list">
+                                        <li>Маулен Ашимбаев, председатель Сената Парламента РК</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <strong>10:15–11:15 | Сессия: Поддержка государством Казахстана социальных инноваций</strong>
+                                <p class="program-description">
+                                    Обсуждение роли государства в развитии социального предпринимательства и инноваций в Казахстане.
+                                </p>
+                                <div class="program-speakers">
+                                    <strong>Модератор:</strong> Гульмира Пармышева, президент Ассоциации социальных инноваторов
+                                    <br><strong>Спикеры:</strong>
+                                    <ul class="speakers-list">
+                                        <li>Ерлан Карин, государственный секретарь РК</li>
+                                        <li>Серик Жумангрин, министр национальной экономики РК</li>
+                                        <li>Сайсат Нурбек, министр науки и высшего образования РК</li>
+                                        <li>Светлана Жакупова, министр труда и социальной защиты населения РК</li>
+                                        <li>Женис Касымбек, аким города Астаны</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lang-content" data-lang="kz">
+                        <div class="program-time">2025 жылғы 25 қараша</div>
+                        <div class="program-title">Екінші күн - Негізгі бағдарлама</div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <strong>09:00–10:00 | Қатысушыларды тіркеу. Кофе-брейк.</strong>
+                                <p class="program-description">
+                                    Әлеуметтік кәсіпкерлердің өнімдері жәрмеңкесі, «Әлеуметтік кәсіпкерлер беттері» фотокөрмесі, 
+                                    көру мүгедектігі бар адамдар жасаған суреттер көрмесі.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>10:00–10:15 | Саммитті ашу</strong>
+                                <div class="program-speakers">
+                                    <strong>Спикер:</strong>
+                                    <ul class="speakers-list">
+                                        <li>Мәулен Әшімбаев, ҚР Парламенті Сенатының төрағасы</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <strong>10:15–11:15 | Сессия: Қазақстан мемлекетінің әлеуметтік инновацияларды қолдауы</strong>
+                                <p class="program-description">
+                                    Қазақстандағы әлеуметтік кәсіпкерлік пен инновациялардың дамуындағы мемлекеттің рөлін талқылау.
+                                </p>
+                                <div class="program-speakers">
+                                    <strong>Модератор:</strong> Гүлмира Пармышева, Әлеуметтік инноваторлар ассоциациясының президенті
+                                    <br><strong>Спикерлер:</strong>
+                                    <ul class="speakers-list">
+                                        <li>Ерлан Қарин, ҚР мемлекеттік хатшысы</li>
+                                        <li>Серік Жұманғарин, ҚР Ұлттық экономика министрі</li>
+                                        <li>Сайсат Нұрбек, ҚР Ғылым және жоғары білім министрі</li>
+                                        <li>Светлана Жақупова, ҚР Еңбек және халықты әлеуметтік қорғау министрі</li>
+                                        <li>Жеңіс Қасымбек, Астана қаласының әкімі</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lang-content" data-lang="en">
+                        <div class="program-time">November 25, 2025</div>
+                        <div class="program-title">Day Two - Main Program</div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <strong>09:00–10:00 | Registration. Coffee Break.</strong>
+                                <p class="program-description">
+                                    Social entrepreneurs' products fair, photo exhibition "Social Entrepreneurs in Faces", 
+                                    exhibition of paintings created by visually impaired people.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <strong>10:00–10:15 | Summit Opening</strong>
+                                <div class="program-speakers">
+                                    <strong>Speaker:</strong>
+                                    <ul class="speakers-list">
+                                        <li>Maulen Ashimbayev, Chairman of the Senate of the Parliament of the Republic of Kazakhstan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <strong>10:15–11:15 | Session: Government Support for Social Innovation in Kazakhstan</strong>
+                                <p class="program-description">
+                                    Discussion of the role of the state in the development of social entrepreneurship and innovation in Kazakhstan.
+                                </p>
+                                <div class="program-speakers">
+                                    <strong>Moderator:</strong> Gulmira Parmyshova, President of the Association of Social Innovators
+                                    <br><strong>Speakers:</strong>
+                                    <ul class="speakers-list">
+                                        <li>Erlan Karin, State Secretary of the Republic of Kazakhstan</li>
+                                        <li>Serik Zhumangarin, Minister of National Economy of the Republic of Kazakhstan</li>
+                                        <li>Saysat Nurbek, Minister of Science and Higher Education of the Republic of Kazakhstan</li>
+                                        <li>Svetlana Zhakupova, Minister of Labor and Social Protection of Population of the Republic of Kazakhstan</li>
+                                        <li>Zhenis Kassymbek, Akim of Astana city</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="section">
+        <div class="container">
+            <div class="lang-content active" data-lang="ru">
+                <h2 class="section-title fade-in">ЦЕЛИ МЕРОПРИЯТИЯ</h2>
+                <p class="section-subtitle fade-in">
+                    Курултай направлен на демонстрацию лидерства Казахстана в развитии социального предпринимательства 
+                    и укрепление международного сотрудничества в регионе.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="kz">
+                <h2 class="section-title fade-in">ІС-ШАРА МАҚСАТТАРЫ</h2>
+                <p class="section-subtitle fade-in">
+                    Құрылтай Қазақстанның әлеуметтік кәсіпкерлікті дамытудағы көшбасшылығын көрсетуге және 
+                    аймақтағы халықаралық ынтымақтастықты нығайтуға бағытталған.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="en">
+                <h2 class="section-title fade-in">EVENT OBJECTIVES</h2>
+                <p class="section-subtitle fade-in">
+                    The Kurultai aims to demonstrate Kazakhstan's leadership in the development of social entrepreneurship 
+                    and strengthen international cooperation in the region.
+                </p>
+            </div>
+            
+            <div class="objectives-grid">
+                <div class="objective-card fade-in">
+                    <div class="objective-number">1</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Демонстрация лидерства</h3>
+                        <p>Демонстрацию лидерства Казахстана в развитии социального предпринимательства и официальный запуск Центра социальных инноваций — первой подобной платформы в Центральной Азии.</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Көшбасшылықты көрсету</h3>
+                        <p>Қазақстанның әлеуметтік кәсіпкерлікті дамытудағы көшбасшылығын көрсету және Орталық Азиядағы алғашқы осындай платформа - Әлеуметтік инновациялар орталығын ресми іске қосу.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Leadership Demonstration</h3>
+                        <p>Demonstration of Kazakhstan's leadership in the development of social entrepreneurship and the official launch of the Center for Social Innovation - the first such platform in Central Asia.</p>
+                    </div>
+                </div>
+                
+                <div class="objective-card fade-in">
+                    <div class="objective-number">2</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Обмен знаниями</h3>
+                        <p>Обмен знаниями с международными экспертами о текущем состоянии и развитии социального предпринимательства в их странах и регионах.</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Білім алмасу</h3>
+                        <p>Әлеуметтік кәсіпкерліктің ағымдағы жағдайы мен дамуы туралы халықаралық сарапшылармен білім алмасу.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Knowledge Exchange</h3>
+                        <p>Exchange of knowledge with international experts on the current state and development of social entrepreneurship in their countries and regions.</p>
+                    </div>
+                </div>
+                
+                <div class="objective-card fade-in">
+                    <div class="objective-number">3</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Трансграничное сотрудничество</h3>
+                        <p>Содействие трансграничному сотрудничеству через совместную разработку стратегий масштабирования социального воздействия в Центральной Азии в соответствии с Целями устойчивого развития ООН (ЦУР).</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Шекаралық ынтымақтастық</h3>
+                        <p>БҰҰ-ның Тұрақты даму мақсаттарына (ТДМ) сәйкес Орталық Азияда әлеуметтік әсерді масштабтау стратегияларын бірлесіп әзірлеу арқылы шекаралық ынтымақтастықты ілгерілету.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Cross-border Cooperation</h3>
+                        <p>Promoting cross-border cooperation through joint development of strategies for scaling social impact in Central Asia in accordance with the UN Sustainable Development Goals (SDGs).</p>
+                    </div>
+                </div>
+                
+                <div class="objective-card fade-in">
+                    <div class="objective-number">4</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Привлечение инвестиций</h3>
+                        <p>Привлечение международных организаций и частного сектора для изучения возможностей партнерства, финансирования и долгосрочной поддержки социальных инноваций в регионе.</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Инвестицияларды тарту</h3>
+                        <p>Аймақтағы әлеуметтік инновацияларға серіктестік, қаржыландыру және ұзақ мерзімді қолдау мүмкіндіктерін зерттеу үшін халықаралық ұйымдарды және жеке секторды тарту.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Investment Attraction</h3>
+                        <p>Attracting international organizations and the private sector to explore opportunities for partnership, funding and long-term support for social innovations in the region.</p>
+                    </div>
+                </div>
+                
+                <div class="objective-card fade-in">
+                    <div class="objective-number">5</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Конкурсы и выставки</h3>
+                        <p>Организация конкурса «Лучший социальный предприниматель Республики Казахстан 2025», организация ярмарки продукции социальных предпринимателей и фото выставки «Герои нашего времени в лицах».</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Байқаулар және көрмелер</h3>
+                        <p>«Қазақстан Республикасының 2025 жылғы үздік әлеуметтік кәсіпкері» байқауын ұйымдастыру, әлеуметтік кәсіпкерлердің өнімдері жәрмеңкесі және «Біздің заманның кейіпкерлері беттері» фотокөрмесі.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Competitions and Exhibitions</h3>
+                        <p>Organization of the competition "Best Social Entrepreneur of the Republic of Kazakhstan 2025", organization of a fair of products of social entrepreneurs and a photo exhibition "Faces of Heroes of Our Time".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countries Section -->
+    <section id="countries" class="section" style="background: var(--secondary-bg);">
+        <div class="container">
+            <div class="lang-content active" data-lang="ru">
+                <h2 class="section-title fade-in">СТРАНЫ-УЧАСТНИЦЫ</h2>
+                <p class="section-subtitle fade-in">
+                    12 стран со всего мира примут участие в Курултае, создавая уникальную платформу 
+                    для международного сотрудничества и обмена опытом.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="kz">
+                <h2 class="section-title fade-in">ҚАТЫСУШЫ ЕЛДЕР</h2>
+                <p class="section-subtitle fade-in">
+                    Әлемнің түкпір-түкпірінен 12 ел Құрылтайға қатысады, халықаралық ынтымақтастық 
+                    және тәжірибе алмасу үшін бірегей платформа жасайды.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="en">
+                <h2 class="section-title fade-in">PARTICIPATING COUNTRIES</h2>
+                <p class="section-subtitle fade-in">
+                    12 countries from around the world will participate in the Kurultai, creating a unique platform 
+                    for international cooperation and exchange of experience.
+                </p>
+            </div>
+            
+            <div class="countries-grid fade-in">
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇦🇲</div>
+                    <div class="font-semibold">Армения</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇦🇿</div>
+                    <div class="font-semibold">Азербайджан</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇬🇪</div>
+                    <div class="font-semibold">Грузия</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇮🇳</div>
+                    <div class="font-semibold">Индия</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇮🇱</div>
+                    <div class="font-semibold">Израиль</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇰🇿</div>
+                    <div class="font-semibold">Казахстан</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇰🇬</div>
+                    <div class="font-semibold">Кыргызстан</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇷🇺</div>
+                    <div class="font-semibold">Россия</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇰🇷</div>
+                    <div class="font-semibold">Южная Корея</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇹🇯</div>
+                    <div class="font-semibold">Таджикистан</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇺🇸</div>
+                    <div class="font-semibold">США</div>
+                </div>
+                <div class="country-item">
+                    <div class="text-2xl mb-2">🇺🇿</div>
+                    <div class="font-semibold">Узбекистан</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section">
+        <div class="container">
+            <div class="lang-content active" data-lang="ru">
+                <h2 class="section-title fade-in">СТАТИСТИКА МЕРОПРИЯТИЯ</h2>
+                <p class="section-subtitle fade-in">
+                    Масштабное событие, объединяющее лидеров социального предпринимательства со всего мира.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="kz">
+                <h2 class="section-title fade-in">ІС-ШАРА СТАТИСТИКАСЫ</h2>
+                <p class="section-subtitle fade-in">
+                    Әлемнің түкпір-түкпірінен әлеуметтік кәсіпкерліктің көшбасшыларын біріктіретін ірі шара.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="en">
+                <h2 class="section-title fade-in">EVENT STATISTICS</h2>
+                <p class="section-subtitle fade-in">
+                    A large-scale event bringing together leaders of social entrepreneurship from around the world.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                <div class="card fade-in text-center">
+                    <div class="card-number">1000+</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-2">Участников</h3>
+                        <p>600 очных + 400 онлайн участников</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-2">Қатысушылар</h3>
+                        <p>600 жүзбе-жүз + 400 онлайн қатысушы</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-2">Participants</h3>
+                        <p>600 offline + 400 online participants</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in text-center">
+                    <div class="card-number">12+</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-2">Стран</h3>
+                        <p>Участвующих в мероприятии</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-2">Елдер</h3>
+                        <p>Іс-шараға қатысушы</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-2">Countries</h3>
+                        <p>Participating in the event</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in text-center">
+                    <div class="card-number">2</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-2">Дня</h3>
+                        <p>Интенсивной программы</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-2">Күн</h3>
+                        <p>Бағытталған бағдарлама</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-2">Days</h3>
+                        <p>Intensive program</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in text-center">
+                    <div class="card-number">1</div>
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-2">Центр</h3>
+                        <p>Социальных инноваций в Центральной Азии</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-2">Орталық</h3>
+                        <p>Орталық Азиядағы әлеуметтік инновациялар</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-2">Center</h3>
+                        <p>Social Innovation in Central Asia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizers Section -->
+    <section class="section" style="background: var(--secondary-bg);">
+        <div class="container">
+            <div class="lang-content active" data-lang="ru">
+                <h2 class="section-title fade-in">ОРГАНИЗАТОРЫ</h2>
+                <p class="section-subtitle fade-in">
+                    Мероприятие организовано ведущими организациями в сфере социального предпринимательства и инноваций.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="kz">
+                <h2 class="section-title fade-in">ҰЙЫМДАСТЫРУШЫЛАР</h2>
+                <p class="section-subtitle fade-in">
+                    Іс-шара әлеуметтік кәсіпкерлік пен инновация саласындағы жетекші ұйымдармен ұйымдастырылған.
+                </p>
+            </div>
+            
+            <div class="lang-content" data-lang="en">
+                <h2 class="section-title fade-in">ORGANIZERS</h2>
+                <p class="section-subtitle fade-in">
+                    The event is organized by leading organizations in the field of social entrepreneurship and innovation.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="card fade-in text-center">
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Social Innovation Hub</h3>
+                        <p>Ведущий центр социальных инноваций в Казахстане, поддерживающий развитие социального предпринимательства в стране.</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Social Innovation Hub</h3>
+                        <p>Қазақстандағы әлеуметтік инновациялардың жетекші орталығы, елдегі әлеуметтік кәсіпкерліктің дамуын қолдайды.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Social Innovation Hub</h3>
+                        <p>The leading center for social innovation in Kazakhstan, supporting the development of social entrepreneurship in the country.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in text-center">
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Ассоциация социальных инноваторов</h3>
+                        <p>Профессиональное сообщество социальных инноваторов, объединяющее лидеров в сфере социального предпринимательства.</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Әлеуметтік инноваторлар ассоциациясы</h3>
+                        <p>Әлеуметтік инновациялар саласындағы көшбасшыларды біріктіретін әлеуметтік инноваторлардың кәсіби қауымдастығы.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Association of Social Innovators</h3>
+                        <p>Professional community of social innovators, uniting leaders in the field of social entrepreneurship.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in text-center">
+                    <div class="lang-content active" data-lang="ru">
+                        <h3 class="text-xl font-bold mb-3">Акимат города Астаны</h3>
+                        <p>Орган местного самоуправления столицы Казахстана, активно поддерживающий развитие социального предпринимательства.</p>
+                    </div>
+                    <div class="lang-content" data-lang="kz">
+                        <h3 class="text-xl font-bold mb-3">Астана қаласының әкімдігі</h3>
+                        <p>Қазақстан астанасының жергілікті өзін-өзі басқару органы, әлеуметтік кәсіпкерліктің дамуын белсенді қолдайды.</p>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 class="text-xl font-bold mb-3">Akimat of Astana City</h3>
+                        <p>Local government body of the capital of Kazakhstan, actively supporting the development of social entrepreneurship.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="lang-content active" data-lang="ru">
+                    <p>&copy; 2025 Международный Курултай социальных предпринимателей. Все права защищены.</p>
+                </div>
+                
+                <div class="lang-content" data-lang="kz">
+                    <p>&copy; 2025 Халықаралық әлеуметтік кәсіпкерлер құрылтайы. Барлық құқықтар қорғалған.</p>
+                </div>
+                
+                <div class="lang-content" data-lang="en">
+                    <p>&copy; 2025 International Kurultai of Social Entrepreneurs. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="index.html#" class="hover:text-accent-color transition-colors">Privacy Policy</a>
+                    <a href="index.html#" class="hover:text-accent-color transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
